@@ -1,8 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  font-family: 'Press Start 2P', cursive;
+}
+
 .card{
   background-color: rgb(175, 159, 13);
   padding: 20px;
   border-radius: 10px;
   color: rgb(7, 5, 5);
   margin: 10px;
-  font-family: 'press-start-2p', cursive;
 }
+.pixel-font {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 30px;
+}
+

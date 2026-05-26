@@ -1,7 +1,7 @@
 function UserCard2({subject, ID}) {
     return (
         <div className="user-card">
-            <h1>{subject}</h1>
+            <h1 className="pixel-font">{subject}</h1>
             <p>{ID}</p>
         </div>
     );

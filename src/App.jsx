@@ -23,9 +23,9 @@ function App() {
         <p style={styles.subtitle}>Bananas collected: {count}</p>
 
         <div style={styles.buttonRow}>
-  <button style={styles.btnPrimary} onClick={decrease}>- Decrease</button>
-  <button style={styles.btnTertiary} onClick={() => setCount(0)}>Reset</button>
-  <button style={styles.btnSecondary} onClick={increase}>+ Increase</button>
+  <button style={styles.pixelButton} onClick={decrease}>- Decrease</button>
+  <button style={styles.pixelButton} onClick={() => setCount(0)}>Reset</button>
+  <button style={styles.pixelButton} onClick={increase}>+ Increase</button>
 </div>
   
         
@@ -71,6 +71,7 @@ const styles = {
     
   },
   
+  
   card: {
   alignItems: "center",
   justifyContent: "center",
@@ -83,15 +84,10 @@ const styles = {
   boxShadow: "0 0 0 4px #3b2b10",
 },
 
-
-  container: {
-    textAlign: "center",
-    marginTop: "50px",
-    fontFamily: "Arial",
-  },
   title: {
-    fontSize: "40px",
+    fontSize: "30px",
     marginBottom: "24px",
+      fontFamily: "'Press Start 2P', cursive",
   },
 
   subtitle: {
@@ -106,40 +102,23 @@ const styles = {
     marginBottom: "24px",
   },
 
-  btnPrimary: {
-    flex: 1,
-    padding: "10px 16px",
+  pixelButton: {
+    
+    padding: "12px 20px",
     fontSize: "16px",
     cursor: "pointer",
-    borderRadius: "999px",
-    border: "none",
-    background: "linear-gradient(90deg, #ebeb42, #ffa500)",
+    borderRadius: 0,
+    imageRendering: "pixelated",
+    boxShadow: "4px 4px 0 #2b2b2b",
+    border: "4px solid #3b2b10",
+    backgroundColor: "#ffd54a",
     fontWeight: "600",
+    fontFamily: "'Press Start 2P', cursive",
+    textTransform: "uppercase",
+    color: "#b2b10",
 
   },
-  btnSecondary: {
-    flex: 1,
-    padding: "10px 16px",
-    fontSize: "16px",
-    cursor: "pointer",
-    borderRadius: "999px",
-    border: "none",
-    background: "linear-gradient(90deg, #ebeb42, #ffa500)",
-    color: "#ebeb42",
-    fontWeight: "600",
-  },
-  btnTertiary: {
-    flex: 1,
-    padding: "10px 16px",
-    fontSize: "16px",
-    cursor: "pointer",
-    borderRadius: "999px",
-    border: "none",
-    background: "linear-gradient(90deg, #ebeb42, #ffa500)",
-    color: "#ebeb42",
-    fontWeight: "600",
 
-  },
   divider: {
     border: "none",
     borderTop: "3px solid rgba(4, 4, 3, 0.25)",
