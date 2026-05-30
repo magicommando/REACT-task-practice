@@ -6,56 +6,72 @@ import './App.css'
 import Welcome from './components/Welcome'
 import UserCard from './components/UserCard'
 import UserCard2 from './components/UserCard2'
+import Login from './components/Login.jsx'
+import Todo from './components/Todo.jsx'
+
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
+
   const [count, setCount] = useState(0);
   const increase = () => setCount(count + 1);
   const decrease = () => setCount(count - 1);
 
-  return (
-    
-   <div style={styles.page}> 
-   <div style={styles.card}> 
-      
-         
+  const handleLogin = (email, password) => {
+    setUserEmail(email);
+    setLoggedIn(true);
+  }
 
-      
-        <h1 style={styles.title}>Monkey counter</h1>
-        <p style={styles.subtitle}>Bananas collected: {count}</p>
+  // 🔑 GATE: if not logged in, show ONLY login screen
+  if (!loggedIn) {
+    return (
+      <div style={styles.page}>
+        <Login onLogin={handleLogin} />
+      </div>
+    );
+  }
+
+  // Once logged in, show Monkey Counter UI
+  return (
+    <div style={styles.page}>
+      <div style={styles.card}>
+        <h1 style={styles.title}>Monkey Counter</h1>
+        <p style={styles.subtitle}>
+          Bananas collected: {count}
+          <br />
+          <span style={{ fontSize: "12px", opacity: 0.8 }}>
+            Logged in as: {userEmail}
+          </span>
+        </p>
 
         <div style={styles.buttonRow}>
-  <button style={styles.pixelButton} onClick={decrease}>- Decrease</button>
-  <button style={styles.pixelButton} onClick={() => setCount(0)}>Reset</button>
-  <button style={styles.pixelButton} onClick={increase}>+ Increase</button>
-</div>
-  
-        
-        
+          <button style={styles.pixelButton} onClick={decrease}>- Decrease</button>
+          <button style={styles.pixelButton} onClick={() => setCount(0)}>Reset</button>
+          <button style={styles.pixelButton} onClick={increase}>+ Increase</button>
+        </div>
+
         <hr style={styles.divider} />
+
+        <Welcome />
+
+        <UserCard 
+          name="Corbin"
+          email={userEmail || "magi696king@gmail.com"}
+          age={34}
+          location="New Mexico"
+          occupation="Carpenter"
+          hobbies="Shooting, 3d Printing, Gaming"
+        />
+
+        <UserCard2 subject="Oooh Oooh Ahh Ahh" ID="Delicious ripe bananas!!" />
         
-      
-    
-      <Welcome />
-      
-      <UserCard 
-        name="Corbin"
-        email="magi696king@gmail.com"
-        age={34}
-        location="New Mexico"
-        occupation="Carpenter"
-        hobbies="Shooting, 3d Printing, Gaming"
-      />
-
-      <UserCard2 
-        subject="React"
-        ID="12345"
-      />
-
-    
-    </div>
-    
+        <Todo />
+      </div>
     </div>
   );
-  }
+}
+  
+ 
 const styles = {
   page: {
     minHeight: "100vh",
